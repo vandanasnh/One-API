@@ -108,4 +108,5 @@ os.environ["OMP_NUM_THREADS"] = args.omp_num_threads
 os.environ["TF_NUM_INTEROP_THREADS"] = args.num_inter_threads
 os.environ["TF_NUM_INTRAOP_THREADS"] = args.num_intra_threads
 
-save_res(infer_perf_pb(args.input_graph, val_data()))
+with tf.device("cpu"):
+    save_res(infer_perf_pb(args.input_graph, val_data()))
